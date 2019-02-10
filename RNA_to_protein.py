@@ -1,26 +1,32 @@
-#TODO take string and split into sets of 3 letters
-#TODO take list of codons create if statements for RNA codons
-#TODO append letters of codons to a list
-#TODO turn list to string
+"""
+
+Script to determine amino acid sequence from RNA strand
+
+"""
+
+
+#TODO check  string as elements 0,1,2 until aug is found and use those deleting the elements before that
+#TODO add in a reader to read in txt file
+#TODO cycle through the whole chain checking for multiple sequences
 
 
 
-def rna_to_protein(s):
+def rna_to_protein(rna_sequence):
     """
-    :param s:
-    :return:
+    :param rna_sequence: sequence of RNA
+    :return: Amino acids correlating to codons in RNA string
     """
     codon = []
-    if (len(s) % 3) >= 1:
+    if (len(rna_sequence) % 3) >= 1:
         raise ValueError
 
-    for letter in s:
+    for letter in rna_sequence:
         # if letter != 'G' or 'A' or 'C' or 'U': #TODO fix this checking for incorrect base
         if letter not in ['G', 'A', 'C', 'U']:
             raise ValueError
 
-    length = int((len(s) / 3) + 1)
-    print(s)
+    length = int((len(rna_sequence) / 3))
+    print(rna_sequence)
     print(length)
     amino_acid_chain = []
     protein = ''
@@ -42,8 +48,8 @@ def rna_to_protein(s):
                  'GAU': 'D', 'GAC': 'D', 'GAA': 'E', 'GAG': 'E',
                  'GGU': 'G', 'GGC': 'G', 'GGA': 'G', 'GGG': 'G'}
 
-    for i in range(1, length):
-        codon.append(s[((3 * i) - 3):((3 * i))])
+    for i in range(0, length):
+        codon.append(rna_sequence[((3 * i)):((3 * i) + 3)])
     print(codon)
     #print(codon_map)
 
@@ -71,3 +77,7 @@ rna_to_protein('ACUGCUGACCAU')
 
 #check for incorrect base
 #rna_to_protein('ACTGTUAUG')
+
+#assert (rna_to_protein('AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA') == 'MAMAPRTEINSTRING')
+
+#rna_to_protein('')

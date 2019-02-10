@@ -1,4 +1,6 @@
-
+"""
+Script to calculate hamming distance
+"""
 def ham(s, t):
     # dont need to mutate string to opposite bases
     comp = []
