@@ -8,7 +8,8 @@ import os
 
 
 def string_split(s):
-    data = open(os.path.expanduser(s), 'r')
+    filepath = os.path.expanduser(s)
+    data = open(filepath, 'r')
     print(data)
     #list = data.split('>')
     #print(list)
