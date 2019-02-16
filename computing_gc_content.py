@@ -4,18 +4,38 @@
 #TODO calculate GC content of DNA string
 #TODO equate value to dictionary
 #TODO move through dictionary looking for highest and return highest string and GC content
-import os
 
 
-def string_split(s):
-    filepath = os.path.expanduser(s)
-    data = open(filepath, 'r')
-    print(data)
-    #list = data.split('>')
-    #print(list)
-    #li#st.pop(0)
-    #print(list)
+def split_fasta(file_path):
+    fasta = {}
+    with open(file_path, 'r') as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            if line.startswith(">"):
+                active_sequence_name = line[1:]
+                if active_sequence_name not in fasta:
+                    fasta[active_sequence_name] = []
+                continue
+            sequence = line
+            fasta[active_sequence_name].append(sequence)
 
-#string_split(">Rosalind_6404CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG>Rosalind_595CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATAATTTGTCAGCAGACACGC>Rosalind_0808CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT")
+    #print(fasta)
+    return fasta
 
-string_split('~/Downloads/test_case.txt')
+
+def gc_content(f):
+    x = split_fasta(f)
+    gc_count = {}
+    print(x)
+    for key in x:
+        for letter in key:
+            if letter in ['G', 'C']:
+                count += 1
+                gc_count[key] = count
+    return gc_count
+    print(gc_count)
+
+
+gc_content('/Users/Glen/PycharmProjects/Rosalind/test_case.txt')
