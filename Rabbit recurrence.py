@@ -24,7 +24,7 @@ class rabbits(object):
 
     def next_generation(self):
         self.total = self.adult + self.child
-        print(self.total)
+        #print(self.total)
         self.generation = self.generation + 1
         return
 
@@ -41,7 +41,7 @@ class rabbits(object):
                 self.next_generation()
             else:
                 self.aging()
-            print(self.generation, self.total)
+            print('generation: ' + str(f'{self.generation}') + ' total: ' + str(f'{self.total}'))
         return
 
-rabbits(10, 2).working_gen()
+rabbits(6, 2).working_gen()
