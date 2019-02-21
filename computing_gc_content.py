@@ -8,23 +8,24 @@
 
 def file_open(file_path):
     var = []
-    fasta = []
+    fasta = {}
     with open(file_path, 'r') as f:
-        g = f.read()
-        for line in g:
-            var.append(line)
-    print(var)
-    #chevron = var.index('>')
-    chevron = [i for i, x in enumerate(var) if x == ">" or x == "\n"]
-    print(chevron)
+        for line in f:
+            line = line.strip()
+            if line.startswith('>'):
+                sequence_id = line[1:]
+                # print(line)
+                # print(sequence_id)
+                if sequence_id not in fasta:
+                    fasta[sequence_id] = ''
+                    print(f'**** adding new key {sequence_id}', fasta)
+            if not line.startswith('>'):
+                sequence = line
+                print(sequence)
+                fasta[sequence_id] += sequence
+                print(fasta)
+            #sequence = line
 
-    print(var)
-    x = []
-    y = chevron[0:1]
-    x.append((var[y]))
-    print(x)
 
-
-
-
-file_open('/Users/Glen/PycharmProjects/Rosalind/test_case.txt')
+#
+file_open('C:/Users/gchurchward/Downloads/computing_gc_content.txt')
