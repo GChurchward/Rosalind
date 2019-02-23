@@ -1,4 +1,8 @@
+"""
 
+a script to return the number of rabbits after each month of breeding
+
+"""
 
 class rabbits(object):
     def __init__(self, n, k):

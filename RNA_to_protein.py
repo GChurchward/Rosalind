@@ -64,10 +64,11 @@ def rna_to_protein(rna_sequence):
         else:
             protein += i
 
-    print (protein)
+    print(protein)
+    return(protein)
 
 #check works
-rna_to_protein('ACUGCUGACCAU')
+#rna_to_protein('ACUGCUGACCAU')
 
 #check stop codon works
 #rna_to_protein('AUGCGUCUUUAG')

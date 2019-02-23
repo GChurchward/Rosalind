@@ -1,8 +1,17 @@
-#TODO equate value to dictionary
+"""
+
+a script to return the gc content of a collection of dna string in a txt fasta format file
+
+"""
 #TODO move through dictionary looking for highest and return highest string and GC content
 
 
 def file_open(file_path):
+    """
+    taking a fasta fle format and returning a dictionary of the sequence id and sequence
+    :param file_path: path to file
+    :return: dictionary where key is sequence id and value is the sequence
+    """
     fasta = {}
     with open(file_path, 'r') as f:
         for line in f:
@@ -23,6 +32,11 @@ def file_open(file_path):
 
 
 def gc_compute(filepath):
+    """
+
+    :param filepath: path to file of fsata format dna strings
+    :return: gc content of the dna sequences
+    """
     fasta = file_open(filepath)
     print(f' fasta is {fasta}')
     for fasta_key, fasta_value in fasta.items():
@@ -45,5 +59,4 @@ def gc_compute(filepath):
     return fasta_key, highest_content
 
 
-gc_compute('/Users/Glen/Downloads/rosalind_gc.txt')
 
