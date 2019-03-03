@@ -1,8 +1,8 @@
 """
 
-a script to return the prtein string based on removing introns from the dna sequence, converting the sequence to rna
+a script to return the protein string based on removing introns from the dna sequence, converting the sequence to rna
 and then returning the protein string
-
+    rosalind SPLC
 """
 from RNA_to_protein import rna_to_protein
 from computing_gc_content import file_open

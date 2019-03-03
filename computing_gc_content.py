@@ -1,7 +1,7 @@
 """
 
 a script to return the gc content of a collection of dna string in a txt fasta format file
-
+    rosalind GC
 """
 #TODO move through dictionary looking for highest and return highest string and GC content
 

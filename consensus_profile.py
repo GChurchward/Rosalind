@@ -1,7 +1,7 @@
 """
 
 script to return the consensus of a selection of dna strings
-
+    rosalind CONS
 """
 from computing_gc_content import file_open
 

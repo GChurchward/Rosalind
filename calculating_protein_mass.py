@@ -1,7 +1,7 @@
 """
 
 Script to calculate Protein weight in Da
-
+    rosalind PRTM
 """
 
 Weight_map = {'A': 71.03711,

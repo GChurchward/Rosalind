@@ -1,4 +1,8 @@
+"""
 
+a script to calculate the expected number of offspring with a dominant phenotype
+    rosalind IEV
+"""
 
 def expected_offspring(kk, km, kn, mm, mn, nn, offspring=2):
     """

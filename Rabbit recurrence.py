@@ -1,10 +1,11 @@
 """
 
 a script to return the number of rabbits after each month of breeding
-
+    rosalind FIB
 """
 
-class rabbits(object):
+
+class Rabbits(object):
     def __init__(self, n, k):
         self.generation = 1
         self.child = 1
@@ -28,7 +29,7 @@ class rabbits(object):
 
     def next_generation(self):
         self.total = self.adult + self.child
-        #print(self.total)
+        # print(self.total)
         self.generation = self.generation + 1
         return
 
@@ -48,4 +49,5 @@ class rabbits(object):
             print('generation: ' + str(f'{self.generation}') + ' total: ' + str(f'{self.total}'))
         return
 
-rabbits(6, 2).working_gen()
+
+Rabbits(6, 2).working_gen()

@@ -1,21 +1,18 @@
+"""
 
-#def mortal_rabbits(offspring, generations, lifespan):
-#    sequence = [1, 1]
-#    month_offspring = [0, 0]
-#    for i in range(2, lifespan):
-#        sequence[i] = sequence[n]
-#    print(a, b)
-#    for d in range(lifespan, generations):
-#        a, b = b, (offspring * a + b - c)
-#    print(b)
-#    return
-#
-#mortal_rabbits(1, 6, 3)
+a script to calculate the number of rabbits after a certain number of generations based on a single pair of offspring
+ roaslind FIBD
+"""
 
 
-
-class rabbits(object):
+class Rabbits(object):
     def __init__(self, n, k, m):
+        """
+
+        :param n: number of generations
+        :param k: size of the litter - currently 1 needs fixing for more
+        :param m: number of months the rabbit survives
+        """
         self.generation = 0
         self.child = 1
         self.mature = 0
@@ -41,11 +38,11 @@ class rabbits(object):
     def become_adults(self):
         self.adult += self.mature
         print(f'adults {self.adult}')
-        if (self.generation) < self.lifespan:
+        if self.generation < self.lifespan:
             print('too soon for deaths')
             pass
         else:
-            self.dead = self.offspring[((self.generation) - self.lifespan)]
+            self.dead = self.offspring[(self.generation - self.lifespan)]
             self.dead_list.append(self.dead)
             print(self.dead)
             print(f' dead list is {self.dead_list}')
@@ -53,10 +50,6 @@ class rabbits(object):
         # print(f'total dead {self.dead}')
         return
         # print(f'total minus dead {self.adult}')
-        return self.adult
-
-    # def dead(self):
-
 
     def next_generation(self):
         self.total = self.adult + self.child
@@ -82,4 +75,5 @@ class rabbits(object):
                   + ' mature: ' + str(f'{self.mature}') + ' childs: ' + str(f'{self.child}'))
         return
 
-rabbits(96, 1, 20).working_gen()
+
+Rabbits(7, 1, 4).working_gen()

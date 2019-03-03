@@ -1,7 +1,15 @@
 """
+
 Script to calculate hamming distance
+    rosalind HAMM
 """
 def ham(s, t):
+    """
+
+    :param s: DNA string
+    :param t: DNA string
+    :return: hamming distance
+    """
     # dont need to mutate string to opposite bases
     comp = []
     ham_dist = 0

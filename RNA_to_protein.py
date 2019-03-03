@@ -1,14 +1,12 @@
 """
 
 Script to determine amino acid sequence from RNA strand
-
+    rosalind PROT
 """
 
 
-#TODO check  string as elements 0,1,2 until aug is found and use those deleting the elements before that
-#TODO add in a reader to read in txt file
-#TODO cycle through the whole chain checking for multiple sequences
-
+# TODO check  string as elements 0,1,2 until aug is found and use those deleting the elements before that
+# TODO cycle through the whole chain checking for multiple sequences
 
 
 def rna_to_protein(rna_sequence):
@@ -21,7 +19,7 @@ def rna_to_protein(rna_sequence):
         raise ValueError
 
     for letter in rna_sequence:
-        # if letter != 'G' or 'A' or 'C' or 'U': #TODO fix this checking for incorrect base
+        # if letter != 'G' or 'A' or 'C' or 'U':
         if letter not in ['G', 'A', 'C', 'U']:
             raise ValueError
 
@@ -49,12 +47,12 @@ def rna_to_protein(rna_sequence):
                  'GGU': 'G', 'GGC': 'G', 'GGA': 'G', 'GGG': 'G'}
 
     for i in range(0, length):
-        codon.append(rna_sequence[((3 * i)):((3 * i) + 3)])
+        codon.append(rna_sequence[(3 * i):((3 * i) + 3)])
     print(codon)
-    #print(codon_map)
+    # print(codon_map)
 
     for element in codon:
-        amino_acid_chain.append(codon_map[(element)])
+        amino_acid_chain.append(codon_map[element])
 
     print(amino_acid_chain)
 
@@ -63,22 +61,21 @@ def rna_to_protein(rna_sequence):
             break
         else:
             protein += i
-
     print(protein)
-    return(protein)
+    return protein
 
-#check works
-#rna_to_protein('ACUGCUGACCAU')
+# check works
+# rna_to_protein('ACUGCUGACCAU')
 
-#check stop codon works
-#rna_to_protein('AUGCGUCUUUAG')
+# check stop codon works
+# rna_to_protein('AUGCGUCUUUAG')
 
-#check for length of string
-#rna_to_protein('AUCCG')
+# check for length of string
+# rna_to_protein('AUCCG')
 
-#check for incorrect base
-#rna_to_protein('ACTGTUAUG')
+# check for incorrect base
+# rna_to_protein('ACTGTUAUG')
 
-#assert (rna_to_protein('AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA') == 'MAMAPRTEINSTRING')
+# assert (rna_to_protein('AUGGCCAUGGCGCCCAGAACUGAGAUCAAUAGUACCCGUAUUAACGGGUGA') == 'MAMAPRTEINSTRING')
 
-#rna_to_protein('')
+# rna_to_protein('')

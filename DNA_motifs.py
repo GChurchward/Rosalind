@@ -1,6 +1,16 @@
+"""
 
+a script to find the starting positions of a substring sequence in a longer sequence
+    rosalind SUBS
+"""
 
 def motif(strand, sub_string):
+    """
+
+    :param strand: DNA strand
+    :param sub_string: DNA sub-string
+    :return: A list of the starting positions of the sub-string motif in the larger sequence
+    """
     strand_length = len(strand)
     sub_string_length = len(sub_string)
     diff = strand_length - sub_string_length
