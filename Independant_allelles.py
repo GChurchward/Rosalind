@@ -18,7 +18,7 @@ def alleles_numerator(k, n):
     numerator = 1
     denominator = 1
     diff = population - n
-    for value in range((population - diff), population):
+    for value in range((population - diff + 1), population + 1):
         print(diff, population)
         numerator = numerator * value
         print(f' next value is {value}, total numerator = {numerator}')
@@ -31,10 +31,12 @@ def alleles_demoninator(k, n):
     :param n: number of organisms
     :return: numerator value of n c r
     """
+    denominator = 1
     for denom in range(1, n):
         denominator = denominator * denom
-        print(f' next value is {value}, total denominator = {denominator}')
+        print(f' next value is {denom}, total denominator = {denominator}')
     print(denom)
     return denom
 
-alleles_numerator(2, 1)
+#alleles_numerator(2, 1)
+alleles_demoninator(2, 1)
