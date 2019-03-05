@@ -3,40 +3,36 @@
 a script to determine the probability of n of a population having a certain trait
     rosalind LIA
 """
+from math import factorial
 
 
-def alleles_numerator(k, n):
+def alleles(k, n, p=0.25):
     """
 
     :param k: number of generations
     :param n: number of organisms
+    :param p: probability of success
     :return: numerator value of n c r
     """
     population = 2 ** k
+    probabilities = []
+    probability_n = 0
     if n > population:
         raise ValueError
-    numerator = 1
-    denominator = 1
-    diff = population - n
-    for value in range((population - diff + 1), population + 1):
-        print(diff, population)
-        numerator = numerator * value
-        print(f' next value is {value}, total numerator = {numerator}')
-    return numerator
+    for n in range(n, population + 1):
+        print(n)
+        ncr = factorial(population) / (factorial(n) * factorial((population - n)))
+        print(ncr)
+        # number_success = p ** n
+        # print(number_success)
+        # number_fail = (1 - p) ** (population - n)
+        # print(number_fail)
+        combinations = ncr * (p ** n) * ((1 - p) ** (population - n))
+        probabilities.append(combinations)
+    print(probabilities)
+    for idx in probabilities:
+        probability_n += idx
+    print(probability_n)
+    return probability_n
 
-def alleles_demoninator(k, n):
-    """
-
-    :param k: number of generations
-    :param n: number of organisms
-    :return: numerator value of n c r
-    """
-    denominator = 1
-    for denom in range(1, n):
-        denominator = denominator * denom
-        print(f' next value is {denom}, total denominator = {denominator}')
-    print(denom)
-    return denom
-
-#alleles_numerator(2, 1)
-alleles_demoninator(2, 1)
+alleles(5, 7)
