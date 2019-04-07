@@ -1,3 +1,10 @@
+"""
+
+a script to convert a DNA string to RNA
+rosalind RNA
+"""
+
+
 def dna_to_rna(sequence):
     """
 
@@ -9,3 +16,4 @@ def dna_to_rna(sequence):
             sequence = sequence.replace('T', 'U')
             # print(sequence)
     return sequence
+

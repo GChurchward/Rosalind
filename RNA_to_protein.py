@@ -24,8 +24,8 @@ def rna_to_protein(rna_sequence):
             raise ValueError
 
     length = int((len(rna_sequence) / 3))
-    print(rna_sequence)
-    print(length)
+    # print(rna_sequence)
+    # print(length)
     amino_acid_chain = []
     protein = ''
 
@@ -54,7 +54,7 @@ def rna_to_protein(rna_sequence):
     for element in codon:
         amino_acid_chain.append(codon_map[element])
 
-    print(amino_acid_chain)
+    #print(amino_acid_chain)
 
     for i in amino_acid_chain:
         if i == 'STOP':
