@@ -61,4 +61,4 @@ def intron_neg_dna_to_protein(filepath):
 
 # print(intron_neg_dna_to_protein('/Users/Glen/Documents/rna_splicing.txt') == 'MVYIADKQHVASREAYGHMFKVCA')
 
-intron_neg_dna_to_protein('/Users/Glen/Downloads/rosalind_splc.txt')
+intron_neg_dna_to_protein('/Users/Glen/Downloads/rostxt')

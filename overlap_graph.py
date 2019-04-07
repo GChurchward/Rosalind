@@ -23,4 +23,4 @@ def overlap(file_path, overlap_len=3):
 
 
 
-overlap('/Users/Glen/Downloads/rosalind_grph.txt')
+overlap('/Users/Glen/Downloads/rosalind')
