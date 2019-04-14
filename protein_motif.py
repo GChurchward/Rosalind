@@ -2,62 +2,98 @@
 
 a script to take a list of proteins from a txt file, access UniProt protein database and search for a certain
 protein motif
+
+To allow for the presence of its varying forms, a protein motif is represented by a shorthand as follows: [XY] means
+"either X or Y" and {X} means "any amino acid except X."
+For example, the N-glycosylation motif is written as N{P}[ST]{P}
     rosalind MPRT
 """
 import requests
 
 
-
 def protein_strip(request_string):
+    """
 
+    :param request_string: the string for a protein from a resquest from uniprot
+    :return: a clean protein string
+    """
+    # print(request_string)
     protein = []
-
-    for i in request_string:
-        protein.append(i)
-        print(i)
-    print(protein)
+    final_protein = ''
+    for value in str(request_string):
+        protein.append(value)
+        # print(value)
+    # print(protein)
     protein_concat = []
-    for i in protein:
-        if i == '\n':
-            protein_concat.append(protein[i + 1:])
-            print(protein_concat)
-         # line = i.strip()
-        #print(line)
-        # protein = []
-        # if request_string[j: j + 1] == 'SV':
-          #  print(line + 3)
-            # for j in request_string:
-            #     protein.append()
-            # # protein = line[index:]
-            # print(line)
-            # # print(protein)
+    for index, value in enumerate(protein):
+        # print(f' this is i {index}')
+        if value == '\\':
+            # print(protein[index + 1:])
+            protein_concat.append(protein[index + 2:])
+    # print(protein_concat)
+    protein_concat = protein_concat[0]
+    # print(protein_concat)
+    for acid in protein_concat:
+        if acid == '\\':
+            pass
+        elif acid == "'":
+            pass
+        elif acid == 'n':
+            pass
+        else:
+            final_protein += acid
+    # print(final_protein)
+    return final_protein
 
 
 def file_open_to_list(file_path):
     """
 
-    :param file_path:
-    :return:
+    :param file_path: file path location of a text file with a list of protein names
+    :return: dictionary of proteins from uniprot and the corresponding protein
     """
-    proteins_id_list =[]
+    proteins_id_list = []
     protein_dict = {}
     with open(file_path, 'r') as f:
         for line in f:
             line = line.strip()
             proteins_id_list.append(line)
 
-    print(proteins_id_list)
+    # print(proteins_id_list)
     for item in proteins_id_list:
         url = 'http://www.uniprot.org/uniprot/' + item + '.fasta'
         req = requests.get(url)
         # print(req)
         string = req.content
         # print(string)
-        protein_dict[item] = string
+        protein_dict[item] = protein_strip(string)
+    # print(protein_dict)
+    return protein_dict
 
-        print(protein_dict)
+
+def protein_motif_search(file_path):
+    protein_dict = file_open_to_list(file_path)
+    print(protein_dict)
+    for key, value in protein_dict.items():
+        # print(key)
+        # print(value)
+        # print(protein_dict[key])
+        locations = ''
+        for index in range(0, len(value)):
+            # print(index)
+            if ((protein_dict[key][index] == 'N')
+                    and ((protein_dict[key][index + 1]) != 'P')
+                    and ((protein_dict[key][index + 2]) == 'S' or (protein_dict[key][index + 2]) == 'T')
+                    and ((protein_dict[key][index + 3]) != 'P')):
+                locations += (str(index + 1) + ' ')
+        if len(locations) > 0:
+            print(key)
+            print(locations)
+        else:
+            pass
 
 
-# file_open_to_list('/Users/Glen/Documents/protein_id_list.txt')
 
-protein_strip("b'>sp|A2Z669|CSPLT_ORYSI CASP-like protein 5A2 OS=Oryza sativa subsp. indica OX=39946 GN=OsI_33147 PE=3 SV=1\nMRASRPVVHPVEAPPPAALAVAAAAVAVEAGVGAGGGAAAHGGENAQPRGVRMKDPPGAP\nGTPGGLGLRLVQAFFAAAALAVMASTDDFPSVSAFCYLVAAAILQCLWSLSLAVVDIYAL\nLVKRSLRNPQAVCIFTIGDGITGTLTLGAACASAGITVLIGNDLNICANNHCASFETATA\nMAFISWFALAPSCVLNFWSMASR\n'")
+protein_motif_search('/Users/Glen/Downloads/rosalind_mprt.txt')
+
+# file_open_to_list('A2Z669')
