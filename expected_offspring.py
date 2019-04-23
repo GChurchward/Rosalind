@@ -4,6 +4,7 @@ a script to calculate the expected number of offspring with a dominant phenotype
     rosalind IEV
 """
 
+
 def expected_offspring(kk, km, kn, mm, mn, nn, offspring=2):
     """
 
@@ -31,6 +32,7 @@ def expected_offspring(kk, km, kn, mm, mn, nn, offspring=2):
     print('% of population dominant: ' + str(percent_total_dom))
     print('% of population recessive: ' + str(percent_total_rec))
     return
+
 
 expected_offspring(1, 0, 0, 1, 0, 1)
 

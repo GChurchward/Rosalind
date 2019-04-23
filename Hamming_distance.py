@@ -3,6 +3,8 @@
 Script to calculate hamming distance
     rosalind HAMM
 """
+
+
 def ham(s, t):
     """
 
@@ -34,7 +36,6 @@ def ham(s, t):
         if s[i] != t[i]:
             ham_dist += 1
     print(ham_dist)
-
 
 
 ham("TGACCCGTTATGCTCGAGTTCGGTCAGAGCGTCATTGCGAGTAGTCGTTTGCTTTCTCAAACTCC", "GAGCGATTAAGCGTGACAGCCCCAGGGAACCCACAAAACGTGATCGCAGTCCATCCGATCATACA")

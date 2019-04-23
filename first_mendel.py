@@ -4,6 +4,7 @@ a script to calculate the probability of offspring with a dominact gene factor
     rosalind IPRB
 """
 
+
 def prob(k, m, n):
     """
 
