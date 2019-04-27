@@ -72,6 +72,11 @@ def file_open_to_list(file_path):
 
 
 def protein_motif_search(file_path):
+    """
+
+    :param file_path: file path location of txt file containing protein names
+    :return: the positions of the N-glycosylation motif present in the protein
+    """
     protein_dict = file_open_to_list(file_path)
     print(protein_dict)
     for key, value in protein_dict.items():
